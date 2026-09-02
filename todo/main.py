@@ -48,6 +48,10 @@ def get_todos(
 def get_count():
     return len(todos)
 
+@app.get("/todos/completed", response_model=list[TodoResponse])
+def get_completed_todos():
+    return [todo for todo in todos if todo.completed]
+
 
 @app.get("/todos/{todo_id}", response_model=TodoResponse)
 def get_todo(todo_id: int):
