@@ -44,6 +44,10 @@ def get_todos(
 
     return result
 
+@app.get("/todos/count" , response_model=int)
+def get_count():
+    return len(todos)
+
 
 @app.get("/todos/{todo_id}", response_model=TodoResponse)
 def get_todo(todo_id: int):
